@@ -17,7 +17,7 @@ export default function useClima() {
 
         try {
             //obtener la latitud y longitud de la ciudad
-            const url = `http://api.openweathermap.org/geo/1.0/direct?q=${ciudad},${pais}&limit=1&appid=${key}`;
+            const url = `https://api.openweathermap.org/geo/1.0/direct?q=${ciudad},${pais}&limit=1&appid=${key}`;
 
             const {data} = await axios(url);
 
