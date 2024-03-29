@@ -1,6 +1,10 @@
+
+import {ref, computed} from 'vue';
 import axios from 'axios';
 
 export default function useClima() {
+
+    const clima = ref({})
 
     const obtenerClima = async({ ciudad, pais }) => {
         //importar la api key
@@ -19,7 +23,7 @@ export default function useClima() {
 
         const {data: resultado} = await axios(urlClima);
 
-        console.log(resultado)
+        clima.value = resultado
         } catch (error) {
             console.log(error);
         }
@@ -27,8 +31,12 @@ export default function useClima() {
         
     }
 
+    const mostrarClima = computed(() => {
+        return Object.values(clima.value).length > 0
+    })
+
 
     return {
-        obtenerClima
+        obtenerClima, clima, mostrarClima
     }
 }
