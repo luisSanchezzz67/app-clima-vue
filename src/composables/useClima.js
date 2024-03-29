@@ -13,14 +13,18 @@ export default function useClima() {
             const {data} = await axios(url);
 
             const {lat, lon} = data[0]
-            console.log(lat)
-            console.log(lon)
 
+            //obtener el clima de la ciudad
+        const urlClima = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
+
+        const {data: resultado} = await axios(urlClima);
+
+        console.log(resultado)
         } catch (error) {
             console.log(error);
         }
 
-        //obtener el clima de la ciudad
+        
     }
 
 
